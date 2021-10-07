@@ -1,8 +1,9 @@
 
 let randomnumber=Math.trunc(Math.random()*20+1);
-console.log(randomnumber);
+//console.log(randomnumber);
 let score=20;
 let highscore=0;
+let flag=true;
 
 let guessnumber=document.querySelector('.guess');
 let checkbutton=document.querySelector('.check');
@@ -20,11 +21,15 @@ document.querySelector('.again').addEventListener('click',function(){
     replacequestionmark.innerHTML='?';
     guessnumber.value='';
     randomnumber=Math.trunc(Math.random()*20+1);
+    flag=true;
     
 })
 
 
+
 checkbutton.addEventListener('click',function(){
+    if(flag)
+{
     if(guessnumber.value!='')
     {
         if(guessnumber.value=='' ||guessnumber.value<1 || guessnumber.value>20)
@@ -51,6 +56,7 @@ checkbutton.addEventListener('click',function(){
             textdisplay.innerHTML="Correct number";
             replacequestionmark.innerHTML=guessnumber.value;
             document.body.style.backgroundColor = '#60b347';
+            flag=false;
             if(score > highscore)
             {
                 highscore=score;
@@ -63,4 +69,6 @@ checkbutton.addEventListener('click',function(){
 
         }
     }
+}
 })
+
